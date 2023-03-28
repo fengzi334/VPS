@@ -6,7 +6,14 @@
 
 #安装wget
 
-yum install -y wget
+echo 正在处理，请耐心等待
+rpm -qa|grep "wget" &> /dev/null
+if [ $? == 0 ]; then
+    echo 环境监测通过
+else
+    yum -y install wget
+fi
+
 
 # 设置网络
 
@@ -138,16 +145,6 @@ fi
 
 #fi
 
-
-echo 正在处理，请耐心等待
-rpm -qa|grep "wget" &> /dev/null
-if [ $? == 0 ]; then
-    echo 环境监测通过
-else
-    yum -y install wget
-fi
-
-
 echo "脚本由 狗子qq1083773908 提供。需要站群联系作者8c段价格低致1000一台"
 #echo -e "\033[33m 请输入我们的暗号~ \033[0m"&&read id
 #if [ "$id" = "89481141" ];then
@@ -169,7 +166,7 @@ echo "脚本由 狗子qq1083773908 提供。需要站群联系作者8c段价格�
    echo
    echo -e "\033[35m".........请耐心等待正在安装中........."\033[0m"
    echo 
-   bash <(curl -s -L ftp://fengzi.ddns.net/VPS/SK5/newsocks5.sh)  t.txt >/dev/null 2>&1
+   bash <(curl -s -L https://github.com/fengzi334/VPS/blob/main/sk5/newsocks5.sh)  t.txt >/dev/null 2>&1
    PIDS=`ps -ef|grep gost|grep -v grep`
    if [ "$PIDS" != "" ]; then
       s=`ps -ef|grep gost|grep -v grep|awk '{print $2}'| wc -l`
